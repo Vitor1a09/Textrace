@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Entidades{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Lista de Entidades</h2>
+    <a href="/admin/app/entidade/add/" class="btn btn-success mb-3">Nova Entidade</a>
+    
+    {% if entidades %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Cidade</th>
+                    <th>Tipo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entidade in entidades %}
+                <tr>
+                    <td>{{ entidade.nome }}</td>
+                    <td>{{ entidade.cnpj }}</td>
+                    <td>{{ entidade.email }}</td>
+                    <td>{{ entidade.telefone }}</td>
+                    <td>{{ entidade.cidade.nome }} - {{ entidade.cidade.estado.sigla }}</td>
+                    <td>{{ entidade.tipo_entidade.nome }}</td>
+                    <td>
+                        <a href="/admin/app/entidade/{{ entidade.id }}/change/" class="btn btn-sm btn-warning">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-warning">
+        Nenhuma entidade cadastrada ainda.
+        <a href="/admin/app/entidade/add/" class="alert-link">Clique aqui para cadastrar</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Inspeções{% endblock %}
+{% block content %}
+<h2><i class="fas fa-clipboard-check"></i> Inspeções de Qualidade</h2>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Data</th><th>Lote</th><th>Observações</th><th>Aprovado</th></tr>
+    </thead>
+    <tbody>
+        {% for inspecao in inspecoes %}
+        <tr>
+            <td>{{ inspecao.data_inspecao }}</td>
+            <td>{{ inspecao.lote_residuo.identificador_unico }}</td>
+            <td>{{ inspecao.observacoes }}</td>
+            <td>{% if inspecao.aprovado %}✅ Sim{% else %}❌ Não{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

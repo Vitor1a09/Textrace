@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block title %}Início{% endblock %}
+{% block content %}
+
+<!-- Banner principal -->
+<div class="jumbotron bg-light p-5 rounded mb-4">
+    <h1 class="display-4">♻️ Bem-vindo ao TexTrace</h1>
+    <p class="lead">Sistema de Rastreamento e Certificação de Resíduos Têxteis</p>
+    <hr class="my-4">
+    <p>Gerencie lotes, entidades, movimentações e certificados de resíduos têxteis de forma eficiente.</p>
+</div>
+
+<!-- Cards de resumo -->
+<!-- <div class="row mb-4">
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body text-center">
+                <h3>{{ total_lotes }}</h3>
+                <p>Lotes Cadastrados</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="card text-white bg-success">
+            <div class="card-body text-center">
+                <h3>{{ total_entidades }}</h3>
+                <p>Entidades</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="card text-white bg-info">
+            <div class="card-body text-center">
+                <h3>{{ total_movimentacoes }}</h3>
+                <p>Movimentações</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body text-center">
+                <h3>{{ total_certificados }}</h3>
+                <p>Certificados</p>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Últimos Lotes e Movimentações -->
+<!-- <div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header" style="background-color: #B85D19; color: white;">
+                <i class="fas fa-box"></i> Últimos Lotes Cadastrados
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Peso</th>
+                                <th>Material</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lote in ultimos_lotes %}
+                            <tr>
+                                <td>{{ lote.identificador_unico }}</td>
+                                <td>{{ lote.peso_kg }} kg</td>
+                                <td>{{ lote.material_tipo.nome }}</td>
+                                <td>{{ lote.data_criacao|date:"d/m/Y" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center">Nenhum lote cadastrado</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header" style="background-color: #B85D19; color: white;">
+                <i class="fas fa-truck"></i> Últimas Movimentações
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Lote</th>
+                                <th>Destino</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mov in ultimas_movimentacoes %}
+                            <tr>
+                                <td>{{ mov.lote_residuo.identificador_unico }}</td>
+                                <td>{{ mov.entidade_destino.nome }}</td>
+                                <td>{{ mov.status_movimentacao.nome }}</td>
+                                <td>{{ mov.data_evento|date:"d/m/Y H:i" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center">Nenhuma movimentação</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Certificados Recentes -->
+<!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header" style="background-color: #B85D19; color: white;">
+                <i class="fas fa-certificate"></i> Certificados Emitidos Recentemente
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Lote</th>
+                                <th>Data Emissão</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cert in certificados_recentes %}
+                            <tr>
+                                <td><code>{{ cert.codigo_autenticidade }}</code></td>
+                                <td>{{ cert.lote_residuo.identificador_unico }}</td>
+                                <td>{{ cert.data_emissao|date:"d/m/Y" }}</td>
+                                <td><span class="badge bg-success">Válido</span></td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center">Nenhum certificado emitido</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} -->

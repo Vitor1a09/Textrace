@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Lotes{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Lista de Lotes de Resíduos</h2>
+    <a href="/admin/app/loteresiduo/add/" class="btn btn-success mb-3">Novo Lote</a>
+    
+    {% if lotes %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID Único</th>
+                    <th>Peso (kg)</th>
+                    <th>Data Criação</th>
+                    <th>Origem</th>
+                    <th>Material</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lote in lotes %}
+                <tr>
+                    <td>{{ lote.identificador_unico }}</td>
+                    <td>{{ lote.peso_kg }}</td>
+                    <td>{{ lote.data_criacao|date:"d/m/Y" }}</td>
+                    <td>{{ lote.entidade_origem.nome }}</td>
+                    <td>{{ lote.material_tipo.nome }}</td>
+                    <td>
+                        <a href="/admin/app/loteresiduo/{{ lote.id }}/change/" class="btn btn-sm btn-warning">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-warning">
+        Nenhum lote cadastrado ainda.
+        <a href="/admin/app/loteresiduo/add/" class="alert-link">Clique aqui para cadastrar</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

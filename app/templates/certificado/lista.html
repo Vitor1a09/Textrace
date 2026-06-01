@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Certificados{% endblock %}
+{% block content %}
+<h2><i class="fas fa-certificate"></i> Certificados de Conformidade</h2>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Código</th><th>Data Emissão</th><th>Lote</th><th>Origem</th><th>Material</th></tr>
+    </thead>
+    <tbody>
+        {% for cert in certificados %}
+        <tr>
+            <td><code>{{ cert.codigo_autenticidade }}</code></td>
+            <td>{{ cert.data_emissao }}</td>
+            <td>{{ cert.lote_residuo.identificador_unico }}</td>
+            <td>{{ cert.lote_residuo.entidade_origem.nome }}</td>
+            <td>{{ cert.lote_residuo.material_tipo.nome }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">Nenhum certificado cadastrado</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
