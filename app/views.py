@@ -3,8 +3,7 @@ from django.shortcuts import render
 from django.views import View
 from .models import (
     LoteResiduo, Entidade, Movimentacao, Certificado, 
-    InspecaoQualidade, AgendamentoColeta, RelatorioSustentabilidade,
-    Notificacao
+    InspecaoQualidade, AgendamentoColeta, RelatorioSustentabilidade
 )
 
 class IndexView(View):

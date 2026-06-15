@@ -1,10 +1,10 @@
-# app/admin.py
+#ativar venv: cd .venv/scripts;activate.cd ../..
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import (
     Usuario, Estado, Cidade, TipoEntidade, Entidade, 
     MaterialTipo, LoteResiduo, StatusMovimentacao, 
-    Movimentacao, Certificado, Notificacao, 
+    Movimentacao, Certificado, 
     RelatorioSustentabilidade, Auditoria, 
     AgendamentoColeta, InspecaoQualidade
 )
@@ -79,18 +79,6 @@ class CertificadoAdmin(admin.ModelAdmin):
     list_display = ('codigo_autenticidade', 'data_emissao', 'lote_residuo')
     search_fields = ('codigo_autenticidade', 'lote_residuo__identificador_unico')
 
-class NotificacaoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'data_envio', 'usuario_destinatario')
-    search_fields = ('titulo', 'usuario_destinatario__username')
-    list_filter = ('data_envio',)
-    ordering = ('-data_envio',)
-    
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "usuario_destinatario":
-            kwargs["queryset"] = Usuario.objects.all()
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
-
 class AgendamentoColetaAdmin(admin.ModelAdmin):
     list_display = ('data_prevista', 'lote_residuo', 'transportadora')
     search_fields = ('lote_residuo__identificador_unico', 'transportadora__nome')
@@ -113,7 +101,6 @@ admin.site.register(LoteResiduo, LoteResiduoAdmin)
 admin.site.register(StatusMovimentacao)
 admin.site.register(Movimentacao, MovimentacaoAdmin)
 admin.site.register(Certificado, CertificadoAdmin)
-admin.site.register(Notificacao, NotificacaoAdmin)
 admin.site.register(RelatorioSustentabilidade)
 admin.site.register(Auditoria)
 admin.site.register(AgendamentoColeta, AgendamentoColetaAdmin)

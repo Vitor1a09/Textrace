@@ -167,22 +167,6 @@ class Certificado(models.Model):
         verbose_name_plural = "Certificados"
 
 
-class Notificacao(models.Model):
-    titulo = models.CharField(max_length=100, verbose_name="Título")
-    mensagem = models.TextField(verbose_name="Mensagem")
-    data_envio = models.DateTimeField(auto_now_add=True, verbose_name="Data de Envio")
-    usuario_destinatario = models.ForeignKey(
-        Usuario,
-        on_delete=models.CASCADE,
-        verbose_name="Destinatário"
-    )
-    def __str__(self):
-        return self.titulo
-    class Meta:
-        verbose_name = "Notificação"
-        verbose_name_plural = "Notificações"
-
-
 class RelatorioSustentabilidade(models.Model):
     periodo_inicio = models.DateField(verbose_name="Período Início")
     periodo_fim = models.DateField(verbose_name="Período Fim")
