@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Cadastro{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card mt-4">
+            <div class="card-header" style="background-color: #B85D19; color: white;">
+                <h4 class="text-center"><i class="fas fa-user-plus"></i> Cadastro</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Usuário</label>
+                        {{ form.username }}
+                        <small class="text-muted">Obrigatório. 150 caracteres ou menos. Letras, números e @/./+/-/_ apenas.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="entidade" class="form-label">Entidade</label>
+                        {{ form.entidade }}
+                        <small class="text-muted">Selecione a empresa que você representa.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">Senha</label>
+                        {{ form.password1 }}
+                        <small class="text-muted">Sua senha deve ter pelo menos 8 caracteres.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password2" class="form-label">Confirmar Senha</label>
+                        {{ form.password2 }}
+                        <small class="text-muted">Digite a mesma senha novamente para confirmação.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" style="background-color: #B85D19; border-color: #B85D19;">
+                        <i class="fas fa-user-plus"></i> Cadastrar
+                    </button>
+                </form>
+                <div class="text-center mt-3">
+                    <p>Já tem conta? <a href="{% url 'login' %}" style="color: #B85D19;">Faça login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
